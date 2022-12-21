@@ -11,7 +11,7 @@ const postSchema = mongoose.Schema({
   },
   price: {
     type: String,
-    required: true,
+    required: false,
   },
   creatorId: {
     type: mongoose.Types.ObjectId,
