@@ -41,6 +41,15 @@ const postSchema = mongoose.Schema({
       "top",
     ],
   },
+  quality: {
+    type: String,
+    required: false,
+    enum: ["top-shelf", "mid-shelf", "low-shelf"],
+  },
+  recommended: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 const Post = mongoose.model("Post", postSchema);

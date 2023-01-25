@@ -20,6 +20,8 @@ router.post("/create", isAuthenticated, async (req, res) => {
       postId: req.body.postId,
       postPic: req.body.postPic,
       typeOfCategory: req.body.typeOfCategory,
+      quality: req.body.quality,
+      recommended: req.body.recommended,
     });
     res.json(newPost);
   } catch (err) {
@@ -135,31 +137,31 @@ router.get("/all-top", async (req, res) => {
   }
 });
 
-//R
-// router.get("/allposts/:postId", async (req, res) => {
-//   try {
-//     const allShoes = await Post.find({ postId: req.params.postId }).populate(
-//       "creatorId"
-//     );
-//     res.json(allShoes);
-//   } catch (err) {
-//     res.json(err.message);
-//   }
-// });
+// R
+router.get("/find-post/:postId", async (req, res) => {
+  try {
+    const foundPost = await Post.find({ postId: req.params.postId }).populate(
+      "creatorId"
+    );
+    res.json(foundPost);
+  } catch (err) {
+    res.json(err.message);
+  }
+});
 
-//U
-// router.post("/update/:postId", isAuthenticated, async (req, res) => {
-//   try {
-//     let updatedPost = await Post.findByIdAndUpdate(
-//       req.params.postId,
-//       { ...req.body },
-//       { new: true }
-//     );
-//     res.json(updatedPost);
-//   } catch (err) {
-//     res.json(err.message);
-//   }
-// });
+// U
+router.post("/update/:postId", isAuthenticated, async (req, res) => {
+  try {
+    let updatedPost = await Post.findByIdAndUpdate(
+      req.params.postId,
+      { ...req.body },
+      { new: true }
+    );
+    res.json(updatedPost);
+  } catch (err) {
+    res.json(err.message);
+  }
+});
 
 //D
 router.delete("/delete/:postId", isAuthenticated, async (req, res) => {
