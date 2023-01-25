@@ -143,7 +143,7 @@ router.get("/find-post/:postId", async (req, res) => {
     const foundPost = await Post.find({ postId: req.params.postId }).populate(
       "creatorId"
     );
-    res.json(foundPost);
+    res.json("foundPost");
   } catch (err) {
     res.json(err.message);
   }
