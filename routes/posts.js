@@ -140,10 +140,10 @@ router.get("/all-top", async (req, res) => {
 // R
 router.get("/find-post/:postId", async (req, res) => {
   try {
-    const foundPost = await Post.find({ postId: req.params.postId }).populate(
-      "creatorId"
-    );
-    res.json("foundPost");
+    const foundPost = await Post.find({
+      _id: req.params.postId,
+    }).populate("creatorId");
+    res.json(foundPost);
   } catch (err) {
     res.json(err.message);
   }
